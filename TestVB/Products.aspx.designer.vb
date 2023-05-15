@@ -59,6 +59,15 @@ Partial Public Class Products
     Protected WithEvents txtDescription As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''lblAlert control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblAlert As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''btnSubmit control.
     '''</summary>
     '''<remarks>

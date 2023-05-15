@@ -25,6 +25,7 @@ Public Class LogIn
 
         If reader.Read Then
             'MsgBox("Login Success")
+            Session("Email") = txtEmail.Text
             Response.Redirect("Default.aspx")
         Else
             MsgBox("Invalid Password or Email ...")

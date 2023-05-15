@@ -1,8 +1,10 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Drawing
 
 Public Class CategoryList
     Inherits System.Web.UI.Page
+    Dim con As New SqlConnection(ConfigurationManager.ConnectionStrings("PharmDBConnectionString").ConnectionString)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -17,8 +19,7 @@ Public Class CategoryList
 
     Protected Sub BindGrad()
 
-        Dim con As New SqlConnection(ConfigurationManager.ConnectionStrings("PharmDBConnectionString").ConnectionString)
-        Dim cmd As New SqlCommand("select * from Cateogries", con)
+        Dim cmd As New SqlCommand("select * from Categories", con)
         Dim da As New SqlDataAdapter(cmd)
         Dim dt As New DataTable
 
@@ -43,17 +44,14 @@ Public Class CategoryList
         Dim l1 As Label = TryCast(GridView1.Rows(e.RowIndex).FindControl("idlbl"), Label)
         Dim t1 As TextBox = TryCast(GridView1.Rows(e.RowIndex).FindControl("nametext"), TextBox)
 
-        'Dim con As New SqlConnection(ConfigurationManager.ConnectionStrings("PharmDBConnectionString").ConnectionString)
         'Dim cmd As New SqlCommand("select * from Cateogries", con)
 
-        Dim con As New SqlConnection
         Dim cmd As New SqlCommand
 
 
-        con.ConnectionString = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=PharmDB;Integrated Security=True"
         con.Open()
         cmd.Connection = con
-        cmd.CommandText = "update [Cateogries]  set Name = @nm where ID =@id1 "
+        cmd.CommandText = "update [Categories]  set Name = @nm where ID =@id1 "
         cmd.Parameters.AddWithValue("@id1", l1.Text)
         cmd.Parameters.AddWithValue("@nm", t1.Text)
         cmd.Connection = con
@@ -63,4 +61,18 @@ Public Class CategoryList
 
 
     End Sub
+
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles GridView1.RowDeleting
+        Dim l1 As Label = TryCast(GridView1.Rows(e.RowIndex).FindControl("idlbl"), Label)
+        Dim cmd As New SqlCommand
+        con.Open()
+        cmd.Connection = con
+        cmd.CommandText = "delete from [Categories] where ID =@id1 "
+        cmd.Parameters.AddWithValue("@id1", l1.Text)
+        cmd.Connection = con
+        cmd.ExecuteNonQuery()
+        GridView1.EditIndex = -1
+        BindGrad()
+    End Sub
+
 End Class

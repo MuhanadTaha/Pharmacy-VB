@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing
 Imports System.IO
+Imports Microsoft.Ajax.Utilities
 
 Public Class Products
     Inherits System.Web.UI.Page
@@ -10,7 +11,7 @@ Public Class Products
         If Not IsPostBack Then
 
             Dim cmd As New SqlCommand
-            cmd = New SqlCommand("SELECT id,Name FROM Cateogries", con)
+            cmd = New SqlCommand("SELECT id,Name FROM Categories", con)
             con.Open()
             ddlCategory.DataTextField = "Name"
             ddlCategory.DataValueField = "id"
@@ -34,19 +35,27 @@ Public Class Products
 
         insert()
         UploadImage()
-        Response.Redirect("CategoryList.aspx")
+        Response.Redirect("ProductsList")
     End Sub
     Public Sub insert()
         Dim AddProducts As String = "insert into Products (Name,CategoryId,Price,Description,Image) values (@NameCategories,@CategoryId,@Price,@Description,@ImageMainProducts) "
-        con.Open()
+
         Dim cmd As SqlCommand = New SqlCommand(AddProducts, con)
         cmd.Parameters.AddWithValue("@NameCategories", txtName.Text)
         cmd.Parameters.AddWithValue("@CategoryId", ddlCategory.SelectedValue)
         cmd.Parameters.AddWithValue("@Price", Convert.ToInt32(txtPrice.Text))
         cmd.Parameters.AddWithValue("@Description", txtDescription.Text)
-        cmd.Parameters.AddWithValue("@ImageMainProducts", fuImage.FileName)
+
+        If fuImage.FileName.IsNullOrWhiteSpace Then
+            cmd.Parameters.AddWithValue("@ImageMainProducts", "void.png")
+        Else
+            cmd.Parameters.AddWithValue("@ImageMainProducts", fuImage.FileName)
+
+        End If
+
+        con.Open()
         cmd.ExecuteNonQuery()
-        MsgBox("Data Stored Successfully", MsgBoxStyle.Information, "Success")
+        'MsgBox("Data Stored Successfully", MsgBoxStyle.Information, "Success")
 
         con.Close()
     End Sub
@@ -56,7 +65,9 @@ Public Class Products
         If fuImage.HasFile Then
             Dim fileName As String = Path.GetFileName(fuImage.PostedFile.FileName)
             fuImage.PostedFile.SaveAs(Server.MapPath("Image/ImageProducts/") & fileName)
-            Response.Redirect(Request.Url.AbsoluteUri)
+            'Response.Redirect(Request.Url.AbsoluteUri)
+            'lblAlert.Visible = True
+            'lblAlert.Text = "Success"
         End If
     End Sub
 

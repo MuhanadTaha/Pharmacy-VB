@@ -51,18 +51,33 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                         <li class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                        <li class="dropdown" id="ddlAdmin" runat="server">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="../Category/AddCategory.aspx">Add Category</a></li>
+                                <li><a href="../Category/CategoryList.aspx">Categories</a></li>
+                                <li><a href="../ProductsList.aspx">Products</a></li>
+                                <li><a id="A1" runat="server" href="Users.aspx">Users</a></li>
+                                <li><a id="A2" runat="server" href="AddAdmin.aspx" >Add Admin</a></li>
 
-                                <li><a href="../Products.aspx">Add Products</a></li>
+
                             </ul>
                         </li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a runat="server" href="~/SignUp">Sign Up</a></li>
-                        <li><a runat="server" href="~/LogIn">Login</a></li>
+                        <li><a runat="server" href="Orders.aspx">My Orders</a></li>
+
+                        <li class="dropdown" id="ddlAuth" runat="server">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="btnSignUp" runat="server" href="~/SignUp">Sign Up</a></li>
+                                <li><a id="btnLogin" runat="server" href="~/LogIn" >Login</a></li>
+
+                                <li>
+                                    <asp:LinkButton ID="btnOut" runat="server" OnClick="btnOut_Click" Visible="false" >Logout</asp:LinkButton>
+                                </li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

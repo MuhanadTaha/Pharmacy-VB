@@ -27,13 +27,13 @@ Public Class SignUp
             con.Close()
 
             con.Open()
-            cmd = New SqlCommand("insert into signup values('" & txtEmail.Text & "' , '" & txtFirstName.Text & "' , '" & txtLastName.Text & "' , '" & txtMobile.Text & "' ,  '" & txtDOB.Text & "' ,  '" & txtPassword.Text & "' , '" & txtCPassword.Text & "' , '" & ddlGender.Text & "')", con)
+            cmd = New SqlCommand("insert into signup values('" & txtFirstName.Text & "'  , '" & txtLastName.Text & "' , '" & txtMobile.Text & "' ,  '" & txtDOB.Text & "' ,  '" & txtEmail.Text & "',  '" & txtPassword.Text & "' , '" & txtCPassword.Text & "' , '" & ddlGender.Text & "' ,'customer')", con)
             If txtEmail.Text = "" And txtPassword.Text = "" And txtFirstName.Text = "" And txtLastName.Text = "" And txtCPassword.Text = "" And txtDOB.Text = "" And txtMobile.Text = "" And ddlGender.Text = "" Then
                 MsgBox("Plese Enter the Details")
             Else
                 cmd.ExecuteNonQuery()
                 MsgBox("Successfully", MsgBoxStyle.Information, "Success")
-                Response.Redirect("Default.aspx")
+                Response.Redirect("LogIn.aspx")
             End If
             con.Close()
         End If

@@ -16,7 +16,7 @@ Public Class AddCategory
         con.ConnectionString = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=PharmDB;Integrated Security=True"
         con.Open()
         cmd.Connection = con
-        cmd.CommandText = "select * from Cateogries where Name = '" & txtCategory.Text & "' "
+        cmd.CommandText = "select * from Categories where Name = '" & txtCategory.Text & "' "
 
         dr = cmd.ExecuteReader
         If dr.HasRows Then
@@ -26,12 +26,12 @@ Public Class AddCategory
             con.Close()
 
             con.Open()
-            cmd = New SqlCommand("insert into Cateogries values('" & txtCategory.Text & "' )", con)
+            cmd = New SqlCommand("insert into Categories values('" & txtCategory.Text & "' )", con)
             If txtCategory.Text = "" Then
                 MsgBox("Please Enter the category name")
             Else
                 cmd.ExecuteNonQuery()
-                MsgBox("Successfully", MsgBoxStyle.Information, "Success")
+                'MsgBox("Successfully", MsgBoxStyle.Information, "Success")
                 Response.Redirect("CategoryList.aspx")
             End If
             con.Close()

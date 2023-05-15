@@ -3,12 +3,44 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <h1>Abdulrahman Pharmacy</h1>
     </div>
 
-    <div class="row">
+
+
+
+
+     <asp:DataList ID="ddlProducts"  RepeatDirection="Horizontal" RepeatColumns="4" runat="server" OnItemCommand="dlReplies_ItemCommand" >
+        <ItemTemplate>
+            <div style="border-radius:5px; padding:10px; margin:10px ; border:solid 1px" runat="server">
+                 <center>
+                  <table style="width:250px">
+                    <tr>
+                    <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("CategoryId") %>' Visible="false" ></asp:Label>
+
+                    <asp:Image ID="imgCategories" runat="server" style="width:230px;height:180px;object-fit:cover; border:solid 1px #bbbbbb" ImageUrl='<%# "~/Image/ImageProducts/" + Eval("Image") %>' />
+                    <br /><br />
+                    <asp:Label ID="lblName" runat="server" Text='<%#Eval("Name") %>' ></asp:Label>
+                     <br /><br />
+                    <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>' style="font-weight:bold;"></asp:Label> $
+                    <br /> <br />
+                    <asp:Label ID="lblDetails" runat="server" Text='<%#Eval("Description") %>' style="font-weight:bold;"></asp:Label>
+                    <br /><br />
+                    <asp:Button ID="btnBuy"  CommandName="Add" runat="server" Text="Buy" CssClass="btn btn-primary btn-sm"></asp:Button>
+                    <br /><br />
+                    <asp:Label ID="lblAlert" runat="server" Text="" CssClass="alert alert-success" Visible="false" style="font-weight:bold;"></asp:Label>
+                    
+                    </tr>
+                  </table>
+                </center>
+            </div>
+        </ItemTemplate>
+    </asp:DataList>
+
+
+
+
+<%--    <div class="row">
         <div class="col-md-4">
             <h2>Getting Started</h2>
             <p>
@@ -37,6 +69,6 @@
                 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
             </p>
         </div>
-    </div>
+    </div>--%>
 
 </asp:Content>

@@ -29,6 +29,7 @@
             </div>
 
             <div>
+                <asp:Label ID="lblAlert" runat="server" class="text-danger" Text="" Visible="false"></asp:Label>
                 <asp:Button ID="btnSubmit" required="true"  runat="server" Text="Submit" CssClass="btn btn-primary" />
             </div>
             <asp:Label ID="Label1" runat="server" Text=""></asp:Label>

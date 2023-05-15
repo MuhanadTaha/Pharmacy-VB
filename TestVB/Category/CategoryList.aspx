@@ -3,13 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <br />
-        <h1 class="text-dark">Categories List</h1>
-
+    <h1 class="text-dark">Categories List</h1>
+    <div style="overflow: hidden">
+        <a id="Button1" href="AddCategory.aspx" class="btn btn-primary" style="float: right; justify-content: center; display: block; width: 100px">Create</a>
+    </div>
+    <br />
     <div class="container cont pt-2 pb-2 ">
-        <asp:GridView Width="100%"  ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="200px" RowStyle-Height="35px">
+        <asp:GridView Width="100%" ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="200px" RowStyle-Height="35px">
             <Columns>
                 <asp:TemplateField HeaderText="ID" SortExpression="ID">
-                    
+
                     <ItemTemplate>
                         <asp:Label ID="idlbl" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                     </ItemTemplate>
@@ -27,16 +30,23 @@
                 </asp:TemplateField>
 
 
-                 <asp:TemplateField >
+                <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" />
+                        <asp:Button ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" style="float:right"/>
                     </ItemTemplate>
 
-                     <EditItemTemplate>
-                         <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="Update" />
-                         <asp:Button ID="btnCancel" runat="server" Text="Cancel"  CommandName="Cancel" />
+                    <EditItemTemplate>
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel"  style="float:right"/>
+                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="Update" style="float:right" />
                     </EditItemTemplate>
-                     <ControlStyle CssClass="btn btn-primary" />
+                    <ControlStyle CssClass="btn btn-primary btn-sm" />
+                </asp:TemplateField>
+
+                 <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        &nbsp; <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" ></asp:LinkButton>
+                    </ItemTemplate>
+                    <ControlStyle CssClass="btn btn-danger btn-sm" />
                 </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />

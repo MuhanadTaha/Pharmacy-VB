@@ -17,7 +17,7 @@
 
         <div class="row" style="margin: 20px 0">
             <div class="col-md-6 p-5">
-                <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" placeholder="Date of Birth"></asp:TextBox>
+                <asp:TextBox ID="txtDOB" runat="server" type="date" CssClass="form-control" placeholder="Date of Birth"></asp:TextBox>
             </div>
             <div class="col-md-6">
                 <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
@@ -27,7 +27,7 @@
         <div class="row" style="margin: 20px 0">
 
             <div class="col-md-6 p-5 ">
-                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" type="email" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
             </div>
 
             <div class="col-md-6 p-5 ">
