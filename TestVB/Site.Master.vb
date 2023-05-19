@@ -35,6 +35,7 @@ Public Class SiteMaster
             btnOut.Visible = True
             btnLogin.Visible = False
             btnSignUp.Visible = False
+            btnOrder.Visible = True
         End If
         con.Close()
     End Sub

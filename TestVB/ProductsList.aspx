@@ -49,12 +49,22 @@
                     </EditItemTemplate>
                 </asp:TemplateField>
 
+
                 <asp:TemplateField HeaderText="Image" SortExpression="Image">
                     <ItemTemplate>
                         <asp:Image ID="imgCategories" runat="server" Style="width: 130px; border-radius:7px; margin:10px; border:1px solid #F5F4F1;" ImageUrl='<%# "~/Image/ImageProducts/" + Eval("Image") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:FileUpload ID="FileUpload1" runat="server" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                  <asp:TemplateField HeaderText="Quantity" SortExpression="Quantity">
+                    <ItemTemplate>
+                        <asp:Label ID="Quantitylbl" runat="server" Text='<%# Bind("Quantity") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="Quantitytxt" runat="server" Text='<%# Bind("Quantity") %>'></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
 

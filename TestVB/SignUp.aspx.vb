@@ -28,12 +28,19 @@ Public Class SignUp
 
             con.Open()
             cmd = New SqlCommand("insert into signup values('" & txtFirstName.Text & "'  , '" & txtLastName.Text & "' , '" & txtMobile.Text & "' ,  '" & txtDOB.Text & "' ,  '" & txtEmail.Text & "',  '" & txtPassword.Text & "' , '" & txtCPassword.Text & "' , '" & ddlGender.Text & "' ,'customer')", con)
-            If txtEmail.Text = "" And txtPassword.Text = "" And txtFirstName.Text = "" And txtLastName.Text = "" And txtCPassword.Text = "" And txtDOB.Text = "" And txtMobile.Text = "" And ddlGender.Text = "" Then
+            If txtEmail.Text = "" Or txtPassword.Text = "" Or txtFirstName.Text = "" Or txtLastName.Text = "" Or txtCPassword.Text = "" Or txtDOB.Text = "" Or txtMobile.Text = "" Or ddlGender.Text = "" Then
                 MsgBox("Plese Enter the Details")
+
             Else
-                cmd.ExecuteNonQuery()
-                MsgBox("Successfully", MsgBoxStyle.Information, "Success")
-                Response.Redirect("LogIn.aspx")
+
+                If txtCPassword.Text <> txtPassword.Text Then
+                    MsgBox("Confirm password is not correct")
+                Else
+                    cmd.ExecuteNonQuery()
+                    MsgBox("Successfully", MsgBoxStyle.Information, "Success")
+                    Response.Redirect("LogIn.aspx")
+                End If
+
             End If
             con.Close()
         End If

@@ -3,6 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <br />
+    <strong class="table-bordered img-rounded pt-1 pl-1 pr-1 pb-1">
+        <asp:Label ID="Totallbl" runat="server" Text="Total" CssClass="text-primary"></asp:Label>:
+        <asp:Label ID="resultTotalLbl" runat="server" Text="" CssClass="text-primary"></asp:Label>
+    </strong>
+    &nbsp;
+    <asp:Button ID="btnConfime" runat="server" CssClass="btn btn-success" Text="Confime" />
+    <br />
+    <br />
+
     <div class="container cont pt-2 pb-2">
         <asp:GridView ID="GridView1" OnRowCommand="GV_OnRowCommand" Style="width: 100%" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="IdOrder" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Horizontal">
             <Columns>
@@ -13,7 +22,7 @@
                 <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
                 <asp:BoundField DataField="Arrive" HeaderText="Arrive" SortExpression="Arrive" />
                 <asp:ButtonField ButtonType="Button" Text="Done" CommandName="OkCommand">
-                    <ControlStyle CssClass="btn btn-success btn-sm" />
+                    <ControlStyle CssClass="btn btn-primary btn-sm" />
                 </asp:ButtonField>
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />

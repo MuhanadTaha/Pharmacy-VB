@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports Microsoft.Ajax.Utilities
 
 Public Class ProductsList
     Inherits System.Web.UI.Page
@@ -43,6 +44,7 @@ Public Class ProductsList
         Dim tName As TextBox = TryCast(GridView1.Rows(e.RowIndex).FindControl("nametext"), TextBox)
         Dim tPrice As TextBox = TryCast(GridView1.Rows(e.RowIndex).FindControl("pricetext"), TextBox)
         Dim tDesc As TextBox = TryCast(GridView1.Rows(e.RowIndex).FindControl("desctext"), TextBox)
+        Dim tQuantity As TextBox = TryCast(GridView1.Rows(e.RowIndex).FindControl("Quantitytxt"), TextBox)
         Dim fUpload As FileUpload = TryCast(GridView1.Rows(e.RowIndex).FindControl("FileUpload1"), FileUpload)
 
 
@@ -51,12 +53,20 @@ Public Class ProductsList
 
         con.Open()
         cmd.Connection = con
-        cmd.CommandText = "update [Products]  set Name = @nm, price = @price, Description = @Description, Image=@image where ID =@id1 "
+        If fUpload.FileName.IsNullOrWhiteSpace Then
+            cmd.CommandText = "update [Products]  set Name = @nm, price = @price, Description = @Description, quantity=@quantity where ID =@id1 "
+
+        Else
+            cmd.CommandText = "update [Products]  set Name = @nm, price = @price, Description = @Description, Image=@image, quantity=@quantity where ID =@id1 "
+            cmd.Parameters.AddWithValue("@image", fUpload.FileName)
+
+        End If
         cmd.Parameters.AddWithValue("@id1", l1.Text)
         cmd.Parameters.AddWithValue("@nm", tName.Text)
         cmd.Parameters.AddWithValue("@price", tPrice.Text)
         cmd.Parameters.AddWithValue("@Description", tDesc.Text)
-        cmd.Parameters.AddWithValue("@image", fUpload.FileName)
+        cmd.Parameters.AddWithValue("@quantity", tQuantity.Text)
+
 
 
 

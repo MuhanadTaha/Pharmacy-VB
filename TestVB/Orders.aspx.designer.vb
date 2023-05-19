@@ -14,6 +14,33 @@ Option Explicit On
 Partial Public Class Orders
 
     '''<summary>
+    '''Totallbl control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Totallbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''resultTotalLbl control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents resultTotalLbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''btnConfime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnConfime As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''GridView1 control.
     '''</summary>
     '''<remarks>

@@ -163,6 +163,15 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:TestVB._Default._dlCateg">
+<summary>
+dlCateg control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:TestVB._Default._ddlProducts">
 <summary>
 ddlProducts control.
@@ -193,6 +202,33 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:TestVB.LogIn._Button1">
 <summary>
 Button1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.Orders._Totallbl">
+<summary>
+Totallbl control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.Orders._resultTotalLbl">
+<summary>
+resultTotalLbl control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.Orders._btnConfime">
+<summary>
+btnConfime control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -316,9 +352,27 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator1">
+<summary>
+RequiredFieldValidator1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:TestVB.SignUp._txtLastName">
 <summary>
 txtLastName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator2">
+<summary>
+RequiredFieldValidator2 control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -334,6 +388,15 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator3">
+<summary>
+RequiredFieldValidator3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:TestVB.SignUp._txtMobile">
 <summary>
 txtMobile control.
@@ -343,9 +406,36 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:TestVB.SignUp._NewtxtMobile">
+<summary>
+NewtxtMobile control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.SignUp._RegExp1">
+<summary>
+RegExp1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:TestVB.SignUp._txtEmail">
 <summary>
 txtEmail control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator4">
+<summary>
+RequiredFieldValidator4 control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -370,9 +460,27 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator5">
+<summary>
+RequiredFieldValidator5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:TestVB.SignUp._txtCPassword">
 <summary>
 txtCPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.SignUp._RequiredFieldValidator6">
+<summary>
+RequiredFieldValidator6 control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -409,6 +517,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:TestVB.SiteMaster._A2">
 <summary>
 A2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:TestVB.SiteMaster._btnOrder">
+<summary>
+btnOrder control.
 </summary>
 <remarks>
 Auto-generated field.

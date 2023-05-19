@@ -41,6 +41,15 @@ Partial Public Class SiteMaster
     Protected WithEvents A2 As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
+    '''btnOrder control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnOrder As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
     '''ddlAuth control.
     '''</summary>
     '''<remarks>

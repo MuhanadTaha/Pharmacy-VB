@@ -64,7 +64,7 @@
                         </li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a runat="server" href="Orders.aspx">My Orders</a></li>
+                        <li><a runat="server" href="Orders.aspx" id="btnOrder" runat="server" visible="false">My Orders</a></li>
 
                         <li class="dropdown" id="ddlAuth" runat="server">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>

@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class _Default
 
     '''<summary>
+    '''dlCateg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dlCateg As Global.System.Web.UI.WebControls.DataList
+
+    '''<summary>
     '''ddlProducts control.
     '''</summary>
     '''<remarks>

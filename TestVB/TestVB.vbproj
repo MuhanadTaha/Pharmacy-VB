@@ -155,6 +155,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="LogIn.aspx" />
     <Content Include="Orders.aspx" />
+    <Content Include="ProductByCategory.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="ProductsList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -269,6 +270,13 @@
     </Compile>
     <Compile Include="Orders.aspx.vb">
       <DependentUpon>Orders.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ProductByCategory.aspx.designer.vb">
+      <DependentUpon>ProductByCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductByCategory.aspx.vb">
+      <DependentUpon>ProductByCategory.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Products.aspx.designer.vb">
