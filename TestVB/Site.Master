@@ -56,6 +56,8 @@
                             <ul class="dropdown-menu">
                                 <li><a href="../Category/CategoryList.aspx">Categories</a></li>
                                 <li><a href="../ProductsList.aspx">Products</a></li>
+                                <li><a href="../CouponsList.aspx">Coupons</a></li>
+
                                 <li><a id="A1" runat="server" href="Users.aspx">Users</a></li>
                                 <li><a id="A2" runat="server" href="AddAdmin.aspx" >Add Admin</a></li>
 

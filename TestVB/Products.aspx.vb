@@ -38,13 +38,17 @@ Public Class Products
         Response.Redirect("ProductsList")
     End Sub
     Public Sub insert()
-        Dim AddProducts As String = "insert into Products (Name,CategoryId,Price,Description,Image) values (@NameCategories,@CategoryId,@Price,@Description,@ImageMainProducts) "
+        Dim AddProducts As String = "insert into Products (Name,CategoryId,Price,Description,Image,Quantity,Date) values (@NameCategories,@CategoryId,@Price,@Description,@ImageMainProducts,@Quantity,@Date) "
 
         Dim cmd As SqlCommand = New SqlCommand(AddProducts, con)
         cmd.Parameters.AddWithValue("@NameCategories", txtName.Text)
         cmd.Parameters.AddWithValue("@CategoryId", ddlCategory.SelectedValue)
         cmd.Parameters.AddWithValue("@Price", Convert.ToInt32(txtPrice.Text))
         cmd.Parameters.AddWithValue("@Description", txtDescription.Text)
+        cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Text)
+        cmd.Parameters.AddWithValue("@Date", DateTime.Now)
+
+
 
         If fuImage.FileName.IsNullOrWhiteSpace Then
             cmd.Parameters.AddWithValue("@ImageMainProducts", "void.png")

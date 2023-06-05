@@ -140,6 +140,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Coupons.aspx" />
+    <Content Include="CouponsList.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -227,6 +229,20 @@
     </Compile>
     <Compile Include="Contact.aspx.vb">
       <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Coupons.aspx.designer.vb">
+      <DependentUpon>Coupons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Coupons.aspx.vb">
+      <DependentUpon>Coupons.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="CouponsList.aspx.designer.vb">
+      <DependentUpon>CouponsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CouponsList.aspx.vb">
+      <DependentUpon>CouponsList.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.vb">

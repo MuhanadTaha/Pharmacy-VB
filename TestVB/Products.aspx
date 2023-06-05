@@ -28,6 +28,11 @@
                 <asp:TextBox ID="txtDescription" required="true"  runat="server" placeholder="Description"  class="form-control"></asp:TextBox>
             </div>
 
+
+            <div class="form-group">
+                <asp:TextBox ID="txtQuantity"  type="number" required="true"  runat="server" placeholder="Qunatity"  class="form-control"></asp:TextBox>
+            </div>
+
             <div>
                 <asp:Label ID="lblAlert" runat="server" class="text-danger" Text="" Visible="false"></asp:Label>
                 <asp:Button ID="btnSubmit" required="true"  runat="server" Text="Submit" CssClass="btn btn-primary" />

@@ -65,6 +65,8 @@ Public Class _Default
                 Dim Price As Label = TryCast(e.Item.FindControl("lblPrice"), Label)
                 Dim alert As Label = TryCast(e.Item.FindControl("lblAlert"), Label)
                 Dim IdCategory As Label = TryCast(e.Item.FindControl("lblCategory"), Label)
+                Dim Count As TextBox = TryCast(e.Item.FindControl("txtCount"), TextBox)
+
                 'Dim Quantity As Label = TryCast(e.Item.FindControl("lblQuantity"), Label)
 
 
@@ -73,8 +75,8 @@ Public Class _Default
                 con.Open()
 
 
-                If CheckQuantityProduct(IdProduct.Text) > 0 Then 'بشوق الكمية المتوفرة من المنتج إذا تمام وفي كمية معناها بخليه يضيفلي الطلب
-                    Dim str As String = "insert into Orders (NameProducts,NameCategories,BuyerUser,Price,Arrive) Values (@NameProducts,@NameCategories,@BuyerUser,@Price,@Arrive)"
+                If CheckQuantityProduct(IdProduct.Text) >= Convert.ToInt32(Count.Text) Then 'بشوق الكمية المتوفرة من المنتج إذا تمام وفي كمية معناها بخليه يضيفلي الطلب
+                    Dim str As String = "insert into Orders (NameProducts,NameCategories,BuyerUser,Price,Arrive,Count) Values (@NameProducts,@NameCategories,@BuyerUser,@Price,@Arrive,@Count)"
 
                     Dim cmd As SqlCommand = New SqlCommand(str, con)
                     cmd.Parameters.AddWithValue("@NameProducts", Name.Text)
@@ -82,12 +84,14 @@ Public Class _Default
                     cmd.Parameters.AddWithValue("@BuyerUser", Convert.ToString(Session("Email")))
                     cmd.Parameters.AddWithValue("@Price", Convert.ToSingle(Price.Text))
                     cmd.Parameters.AddWithValue("@Arrive", "No")
+                    cmd.Parameters.AddWithValue("@Count", Convert.ToInt32(Count.Text))
+
                     alert.Text = "Buy Succeeded"
 
                     cmd.ExecuteNonQuery()
 
 
-                    increaseProd(IdProduct.Text)
+                    increaseProd(IdProduct.Text, Count.Text)
                 Else 'اذا ما في كمية اظهرلي رسالة انه ما في كمية بالمخزن
                     alert.Text = "Out of stock"
                     alert.BackColor = Color.Red
@@ -114,11 +118,11 @@ Public Class _Default
     End Function
 
 
-    Protected Sub increaseProd(IdProduct As String)
+    Protected Sub increaseProd(IdProduct As String, Count As String)
 
 
 
-        Dim str As String = "update Products set Quantity = Quantity -1 where ID= @IDProd AND Quantity > 0"
+        Dim str As String = "update Products set Quantity = Quantity -" & Convert.ToInt32(Count) & " where ID= @IDProd AND Quantity > 0"
 
         Dim cmd As SqlCommand = New SqlCommand(str, con)
         cmd.Parameters.AddWithValue("@IDProd", Convert.ToInt32(IdProduct))
@@ -141,6 +145,20 @@ Public Class _Default
         Return result
     End Function
 
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        con.Open()
+        Dim strProducts As String
+
+        strProducts = "select * from Products where Quantity <> 0 and Name Like '%" & txtSearch.Text & "%'"
 
 
+
+        Dim cmd As SqlCommand = New SqlCommand(strProducts, con)
+        Dim da As SqlDataAdapter = New SqlDataAdapter(cmd)
+        Dim ds As DataSet = New DataSet()
+        da.Fill(ds)
+        ddlProducts.DataSource = ds
+        ddlProducts.DataBind()
+        con.Close()
+    End Sub
 End Class

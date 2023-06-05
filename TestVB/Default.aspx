@@ -6,13 +6,27 @@
         <h1>Abdulrahman Pharmacy</h1>
     </div>
 
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4 alert alert-danger text-center">
+                <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                &nbsp
+                <asp:Button CssClass="btn btn-success" ID="btnSearch" runat="server" Text="Search" />
 
+            </div>
+        </div>
+
+
+    </div>
     <center>
-        <asp:DataList ID="dlCateg" RepeatDirection="Horizontal" RepeatColumns="10" runat="server" >
+        <asp:DataList ID="dlCateg" RepeatDirection="Horizontal" RepeatColumns="10" runat="server">
             <ItemTemplate>
                 <div class="pr-1" runat="server">
                     <center>
-                        <a class="btn btn-primary" href="Default.aspx?Category_ID=<%# Eval("Id")%>"> <%#Eval("Name") %>  </a>
+                        <a class="btn btn-primary" href="Default.aspx?Category_ID=<%# Eval("Id")%>">
+                            <%#Eval("Name") %>  
+
+                        </a>
                     </center>
                 </div>
             </ItemTemplate>
@@ -41,10 +55,13 @@
                             <br />
                             <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>' Style="font-weight: bold;"></asp:Label>
                             $
-                    <br />
+                   
+                            <br />
                             <br />
                             <asp:Label ID="lblDetails" runat="server" Text='<%#Eval("Description") %>' Style="font-weight: bold;"></asp:Label>
                             <br />
+                            <br />
+                            <asp:TextBox value="1" min="1" max="90"  placeholder="Enter a Quantity" ID="txtCount" type="number" CssClass="form-control text-center" runat="server"></asp:TextBox>
                             <br />
                             <asp:Button ID="btnBuy" CommandName="Add" runat="server" Text="Buy" CssClass="btn btn-primary btn-sm"></asp:Button>
                             <br />
@@ -61,34 +78,4 @@
 
 
 
-    <%--    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting Started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>--%>
 </asp:Content>

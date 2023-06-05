@@ -1402,7 +1402,7 @@ mark,
   text-align: right;
 }
 .text-center {
-  text-align: center;
+  text-align: left;
 }
 .text-justify {
   text-align: justify;

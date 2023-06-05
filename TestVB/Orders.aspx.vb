@@ -59,6 +59,7 @@ Public Class Orders
         Dim str As String = "delete from Orders where BuyerUser ='" & Session("Email") & "' "
         Dim cmd As SqlCommand = New SqlCommand(str, con)
         con.Open()
+        Invoce()
         btnAddinHistory()
 
         cmd.ExecuteNonQuery()
@@ -67,11 +68,43 @@ Public Class Orders
         Response.Redirect("~/Orders")
     End Sub
 
+
+    Protected Sub Invoce()
+        Dim str As String = "INSERT INTO Invoice ([TotalOrder], [Username], [Date]) values (" & resultTotalLbl.Text & " ,'" & Session("Email") & "', '" & DateTime.Now & "')"
+        Dim cmd As SqlCommand = New SqlCommand(str, con)
+        cmd.ExecuteNonQuery()
+
+    End Sub
     Protected Sub btnAddinHistory()
-        Dim str As String = "INSERT INTO HistoryOrders ([NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive]) SELECT [NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive] FROM Orders WHERE Orders.BuyerUser='" & Session("Email") & "';"
+        Dim str As String = "INSERT INTO HistoryOrders ([NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count]) SELECT [NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count] FROM Orders WHERE Orders.BuyerUser='" & Session("Email") & "';"
         Dim cmd As SqlCommand = New SqlCommand(str, con)
         cmd.ExecuteNonQuery()
 
     End Sub
 
+    Protected Sub btnAddCoupon_Click(sender As Object, e As EventArgs) Handles btnAddCoupon.Click
+
+        con.Open()
+        Dim str As String = "Select Discount From Coupons where Name = '" & txtCoupon.Text & "'"
+        Dim cmd As SqlCommand = New SqlCommand(str, con)
+        Dim res As Int32 = Convert.ToInt32(cmd.ExecuteScalar())
+
+        Dim strMinimum As String = "Select MinimumAmmount From Coupons where Name = '" & txtCoupon.Text & "'"
+        Dim cmdMinimum As SqlCommand = New SqlCommand(strMinimum, con)
+        Dim resMinimum As Int32 = Convert.ToInt32(cmdMinimum.ExecuteScalar())
+        con.Close()
+
+        Dim Fin
+        If str <> "" Then
+            If TotalPrice() >= resMinimum Then 'هذا الكلام معناه الخصم باشتغل بس لما تتحاوز فيمة المتشريات مبلغ معين
+                Fin = TotalPrice() - res 'بروح بطرح مجموع المشتريات مع القيمة اللي بخصمها الكوبون 
+                resultTotalLbl.Text = Fin
+
+            End If
+
+
+        End If
+
+
+    End Sub
 End Class
