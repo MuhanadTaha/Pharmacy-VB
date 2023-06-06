@@ -54,7 +54,7 @@
                             <br />
                             <br />
                             <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>' Style="font-weight: bold;"></asp:Label>
-                            $
+                            NLS
                    
                             <br />
                             <br />

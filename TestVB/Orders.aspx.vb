@@ -24,6 +24,7 @@ Public Class Orders
 
         If e.CommandName = "OkCommand" Then
             Confirmed(ID)
+
         End If
 
         con.Close()
@@ -39,7 +40,7 @@ Public Class Orders
     End Sub
 
     Protected Function TotalPrice() As Int32
-        Dim str As String = "SELECT Sum(Price) FROM Orders where BuyerUser = '" & Session("Email") & "' "
+        Dim str As String = "SELECT Sum(Price * Count) FROM Orders where BuyerUser = '" & Session("Email") & "' "
 
 
         Dim cmd As SqlCommand = New SqlCommand(str, con)
@@ -58,9 +59,11 @@ Public Class Orders
     Protected Sub btnConfime_Click(sender As Object, e As EventArgs) Handles btnConfime.Click
         Dim str As String = "delete from Orders where BuyerUser ='" & Session("Email") & "' "
         Dim cmd As SqlCommand = New SqlCommand(str, con)
-        con.Open()
         Invoce()
-        btnAddinHistory()
+        con.Open()
+
+        Dim idInvoice As Int32 = LastId() ' رح يجيب أي دي الفاتورة اللي انضافت حالا
+        btnAddinHistory(idInvoice)
 
         cmd.ExecuteNonQuery()
         con.Close()
@@ -70,17 +73,31 @@ Public Class Orders
 
 
     Protected Sub Invoce()
-        Dim str As String = "INSERT INTO Invoice ([TotalOrder], [Username], [Date]) values (" & resultTotalLbl.Text & " ,'" & Session("Email") & "', '" & DateTime.Now & "')"
+        If TotalPrice() > 0 Then
+
+            Dim str As String = "INSERT INTO Invoice ([TotalOrder], [Username], [Date]) values (" & resultTotalLbl.Text & " ,'" & Session("Email") & "', '" & DateTime.Now & "')"
+            Dim cmd As SqlCommand = New SqlCommand(str, con)
+            con.Open()
+            cmd.ExecuteNonQuery()
+            con.Close()
+        End If
+
+
+    End Sub
+    Protected Sub btnAddinHistory(LastIdInvoice) ' بمرر براميتار اي دي الفاتورة عشان اضيفهن لكل المنتجات اللي بدهن يروحن على الهيستوري
+        Dim str As String = "INSERT INTO HistoryOrders ([NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count] ,[IdInvoice]) SELECT [NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count] ,'" & LastIdInvoice & "' FROM Orders  WHERE Orders.BuyerUser='" & Session("Email") & "' "
         Dim cmd As SqlCommand = New SqlCommand(str, con)
         cmd.ExecuteNonQuery()
 
     End Sub
-    Protected Sub btnAddinHistory()
-        Dim str As String = "INSERT INTO HistoryOrders ([NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count]) SELECT [NameProducts], [NameCategories], [BuyerUser], [Price], [Arrive], [Count] FROM Orders WHERE Orders.BuyerUser='" & Session("Email") & "';"
-        Dim cmd As SqlCommand = New SqlCommand(str, con)
-        cmd.ExecuteNonQuery()
 
-    End Sub
+
+    Protected Function LastId() As Int32 'عشان أجيب الأي دي اللي نضاف بجدول الفاتورة  لأني بدي أستخدمه كفورين كي بتيبل الهيستوري
+        Dim str As String = "SELECT Top(1) id FROM Invoice where username = '" & Session("Email") & "'  ORDER BY [DATE] DESC "
+        Dim cmd As SqlCommand = New SqlCommand(str, con)
+        Dim Res As Int32 = cmd.ExecuteScalar()
+        Return Res
+    End Function
 
     Protected Sub btnAddCoupon_Click(sender As Object, e As EventArgs) Handles btnAddCoupon.Click
 

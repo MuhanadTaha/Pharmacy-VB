@@ -156,6 +156,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="LogIn.aspx" />
+    <Content Include="OrderDetails.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="ProductByCategory.aspx" />
     <Content Include="Products.aspx" />
@@ -280,6 +281,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.designer.vb">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.vb">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Orders.aspx.designer.vb">
       <DependentUpon>Orders.aspx</DependentUpon>
